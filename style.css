@@ -23,3 +23,13 @@
 .buton:hover {
     background-color: #e6be5f
 }
+
+.rowr-on {
+    transform: rotate(180deg);
+    transition: ease-in 1s;
+}
+
+.rowr-off {
+    transform: rotate(0deg);
+    transition: ease-out 1s;
+}
