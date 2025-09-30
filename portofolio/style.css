@@ -1,0 +1,35 @@
+.nafbar-kelaz {
+    transition: ease-out 10ms;
+    border-bottom: 2px solid rgba(237, 132, 12, 0);
+}
+
+.nafbar-kelaz:hover {
+    transition: ease-in 10ms;
+    border-bottom: 2px solid #ed840c;
+}
+
+.buton {
+    background-color: #e6b449
+}
+
+.yoi {
+    transform: rotate(360deg);
+}
+
+.yoi:hover {
+    transform: rotate(360deg);
+}
+
+.buton:hover {
+    background-color: #e6be5f
+}
+
+.rowr-on {
+    transform: rotate(180deg);
+    transition: ease-in 1s;
+}
+
+.rowr-off {
+    transform: rotate(0deg);
+    transition: ease-out 1s;
+}

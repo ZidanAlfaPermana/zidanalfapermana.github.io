@@ -1,0 +1,125 @@
+body {
+    background-color: #202020;
+    font-family: serif
+}
+
+.navebar {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.kamunyo {
+    background-color: #4c4c4c;
+    border: 1px solid #838383;
+    color: white;
+    position: fixed;
+    border-radius: 20%;
+    bottom: 50%;
+    right: 20px;
+    padding: 5px 3px;
+}
+
+.kamunyo:hover {
+    box-shadow: 3px 3px 20px #777777;
+    transition: 0.3s ease;
+}
+
+.space-kosong {
+    margin: 250px 0;
+}
+
+.yoi {
+    text-shadow: 2px 2px 20px #777777;
+    color: #FFFFFF;
+}
+
+.anderlain {
+    display: inline-block;
+    text-decoration: none;
+    border-bottom: 3px solid transparent;
+    background-image: linear-gradient(to right, #b3b3b3, #cacaca);
+    background-repeat: no-repeat;
+    background-size: 0% 3px;
+    background-position: 0 100%;
+    transition: background-size 0.3s ease;
+}
+
+.anderlain:hover {
+    background-size: 100% 3px;
+}
+
+.zidan {
+    text-shadow: 0 0 0 white;
+    transition: ease-in-out 0.3s;
+}
+
+.zidan:hover {
+    text-shadow: 2px 2px 20px white;
+    transition: ease-in-out 0.3s;
+}
+
+.omke-gasm {
+    border: 2px solid #535353;
+    border-radius: 10px;
+    padding: 10px 14px;
+    margin: 0 10px 0 0 ;
+    background-color: transparent;
+    color: white;
+}
+
+.omke-gasm:hover {
+    box-shadow: 3px 3px 20px #777777;
+    transition: 0.3s ease;
+    transform: rotate(3deg);
+}
+
+.omke-gasm-part-2 {
+    border: 2px solid #535353;
+    border-radius: 10px;
+    padding: 8px 20px;
+    margin: 0 10px 0 0 ;
+    background-color: transparent;
+    color: white;
+}
+
+.omke-gasm-part-2:hover {
+    box-shadow: 3px 3px 20px #777777;
+    transition: 0.3s ease;
+}
+
+.azek {
+    transform: rotate(0);
+    transition: ease-in-out 0.3s;
+}
+
+.azek:hover {
+    transform: rotate(2deg) scale(0.99);
+    transition: ease-in-out 0.3s;
+    box-shadow: 2px 2px 20px rgba(230, 230, 230, 0.69);
+}
+
+.jimeil {
+    border: 2px solid #535353;
+    border-radius: 10px;
+    padding: 10px 50px;
+    margin: 0 10px 0 0 ;
+    background-color: #4c4c4c;
+    color: white;
+    transition: ease-in-out 0.3s;
+    box-shadow: 0 0 0 transparent;
+}
+
+.jimeil:hover {
+    transition: ease-in-out 0.3s;
+    box-shadow: 2px 2px 20px rgba(97, 97, 97, 0.69);
+}
+
+.cardu {
+    box-shadow: 0 0 0 #b3b3b3;
+    transition: ease 0.2s;
+}
+
+.cardu:hover {
+    box-shadow: 3px 3px 20px #b3b3b3;
+    transition: ease 0.2s;
+}
