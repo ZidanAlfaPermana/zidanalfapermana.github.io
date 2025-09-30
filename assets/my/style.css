@@ -1,0 +1,253 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Montserrat&display=swap');
+
+* {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* Hero Section | Header */
+.hero {
+    background-image: url("https://webicdn.com/sdirmember/9/8681/produk/6z3z8.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    min-height: 95vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    color: white;
+    z-index: 1;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: -1;
+}
+
+.hero h1 {
+    color: white;
+    font-size: 3rem;
+    font-weight: 650;
+}
+
+.hero h1 .under {
+    border-bottom: solid white 1px;
+}
+
+.hero .btn-explore {
+    color: white;
+    border: solid whitesmoke 2px;
+    padding: 12px 24px;
+    font-weight: 600;
+}
+
+.hero .btn-explore:hover {
+    color: black;
+    background: whitesmoke;
+    padding: 12px 24px;
+    font-weight: 600;
+}
+/* Hero Section | Header */
+
+/* About Section */
+.about-section {
+    background-color: #f5ddd5; /* warna peach background */
+    padding: 3rem 2rem;
+    position: relative;
+}
+.about-section .content {
+    max-width: 500px;
+}
+.about-images {
+    position: relative;
+}
+.about-images img:first-child {
+    width: 100%;
+    border-radius: 4px;
+}
+.about-images img:last-child {
+    position: absolute;
+    bottom: -60px;
+    left: -50px;
+    width: 50%;
+    border-radius: 4px;
+    border: 4px solid #fff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+/* About Section */
+
+/* Motif Section */
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+.motif-card {
+    border: 1px solid #eee;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease;
+}
+.motif-card:hover {
+    transform: translateY(-5px);
+}
+.motif-card img {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 15px;
+    opacity: 0.7;
+}
+.motif-card h5 {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.motif-card p {
+    font-size: 0.95rem;
+    color: #555;
+}
+/* About Section */
+
+/* Filosofi */
+.timeline {
+    position: relative;
+    margin: 3rem auto;
+    padding: 2rem 0;
+    max-width: 900px;
+}
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 4px;
+    background: #e0e0e0;
+    transform: translateX(-50%);
+}
+.timeline-item {
+    position: relative;
+    margin: 2rem 0;
+    width: 50%;
+    padding: 1.5rem;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+.timeline-item.left {
+    left: 0;
+}
+.timeline-item.right {
+    left: 50%;
+}
+.timeline-item img {
+    max-width: 100px;
+    margin-bottom: 1rem;
+}
+.timeline-item h4 {
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+/* Connector dot */
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    width: 20px;
+    height: 20px;
+    background: #a77c67;
+    border-radius: 50%;
+    z-index: 1;
+}
+.timeline-item.left::before {
+    right: -10px;
+}
+.timeline-item.right::before {
+    left: -10px;
+}
+/* Responsive */
+@media (max-width: 768px) {
+    .timeline::before {
+        left: 20px; /* geser garis ke kiri */
+    }
+    .timeline-item {
+        width: calc(100% - 2.8rem); /* biar ga lebih dari layar */
+        left: 0 !important;
+        margin: 2rem 0 1rem 2.8rem;
+        box-sizing: border-box;
+    }
+    .timeline-item::before {
+        left: -35px; /* posisi dot sesuai garis */
+        right: auto;
+    }
+}
+
+.text-brown {
+    color: #a67c52;
+}
+/* Filosofi */
+
+/* footer */
+.footer {
+    border-top: 1px solid #ddd;
+    font-family: 'Arial', sans-serif;
+}
+
+.footer h5,
+.footer h6 {
+    color: #222;
+}
+
+.footer-link {
+    color: #333;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.footer-link:hover {
+    color: #a77c67; /* warna aksen */
+    text-decoration: underline;
+}
+
+.footer-map {
+    max-width: 180px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 8px;
+    background: #f8f9fa;
+}
+
+/* footer */
+
+/* Responsive */
+@media (max-width: 992px) {
+    .about-images img:last-child {
+        position: static;
+        width: 100%;
+        margin-top: 1rem;
+    }
+}
+
+/* Seni adalah CSS */
+.under::after {
+    content: "|";
+    display: inline-block;
+    margin-left: 4px;
+    animation: blink 0.7s infinite;
+    color: #d5d5d5; /* warna kursor */
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
