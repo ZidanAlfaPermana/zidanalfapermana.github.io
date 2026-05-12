@@ -1,304 +1,599 @@
 <!doctype html>
-<html lang="en">
+<html lang="id" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zidan Alfa Permana | Portofolio</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="stylei.css">
-    <script src="omke.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark1: '#181818',
+                        dark2: '#242424',
+                        dark3: '#333333',
+                        dark4: '#3f3f3f',
+                        accent: '#c8a96e',
+                        text1: '#e0e0e0',
+                        text2: '#999999',
+                    },
+                    fontFamily: {
+                        display: ['"DM Serif Display"', 'serif'],
+                        body: ['"Outfit"', 'sans-serif'],
+                        mono: ['"DM Mono"', 'monospace'],
+                    },
+                    animation: {
+                        'fade-up': 'fadeUp 0.7s ease forwards',
+                        'fade-in': 'fadeIn 0.5s ease forwards',
+                        'float': 'float 4s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeUp: { '0%': { opacity: 0, transform: 'translateY(32px)' }, '100%': { opacity: 1, transform: 'translateY(0)' } },
+                        fadeIn: { '0%': { opacity: 0 }, '100%': { opacity: 1 } },
+                        float: { '0%,100%': { transform: 'translateY(0px)' }, '50%': { transform: 'translateY(-12px)' } },
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer base {
+            body { font-family: 'Outfit', sans-serif; }
+            h1, h2, h3 { font-family: 'DM Serif Display', serif; }
+        }
+    </style>
 </head>
-<body class="text-white">
-<!--navbar-->
-<nav class="navbar navbar-expand-lg navbar-dark shadow-sm navebar sticky-top shadow-sm">
-    <div class="container">
-        <a class="navbar-brand fs-5 zidan" href="#">Zidan</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+<body class="bg-dark1 text-text1 antialiased overflow-x-hidden">
+
+<!-- ─── NOISE OVERLAY ──────────────────────────────────────────── -->
+<div class="pointer-events-none fixed inset-0 z-0 opacity-[0.03]"
+     style="background-image:url('data:image/svg+xml,%3Csvg viewBox=%220 0 256 256%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noise%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noise)%22/%3E%3C/svg%3E');background-size:200px;"></div>
+
+<!-- ─── NAV ────────────────────────────────────────────────────── -->
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 py-5">
+    <div class="max-w-6xl mx-auto px-6 flex justify-between items-center">
+        <a href="#home" class="font-display text-2xl text-white tracking-wide group">
+            <span class="text-accent">Z</span>idan
+            <span class="block h-px w-0 group-hover:w-full bg-accent transition-all duration-300"></span>
+        </a>
+
+        <!-- Desktop Links -->
+        <ul class="hidden lg:flex items-center gap-8 font-body text-sm font-medium tracking-widest uppercase text-text2">
+            <li><a href="#home" class="hover:text-accent transition-colors duration-200">Home</a></li>
+            <li><a href="#about" class="hover:text-accent transition-colors duration-200">About</a></li>
+            <li><a href="#projects" class="hover:text-accent transition-colors duration-200">Projects</a></li>
+            <li><a href="#contact" class="hover:text-accent transition-colors duration-200">Contact</a></li>
+        </ul>
+
+        <!-- Hamburger -->
+        <button id="hamburger" class="lg:hidden flex flex-col gap-1.5 group" aria-label="menu">
+            <span id="bar1" class="block w-7 h-0.5 bg-white transition-all duration-300 origin-center"></span>
+            <span id="bar2" class="block w-5 h-0.5 bg-accent transition-all duration-300"></span>
+            <span id="bar3" class="block w-7 h-0.5 bg-white transition-all duration-300 origin-center"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item mx-2">
-                    <a class="nav-link active nafbar-kelaz anderlain" aria-current="page" href="#">Home</a>
-                </li>
-                <li class="nav-item mx-2">
-                    <a class="nav-link nafbar-kelaz anderlain" href="#about">About</a>
-                </li>
-                <li class="nav-item mx-2">
-                    <a class="nav-link nafbar-kelaz anderlain" href="#projects">Projects</a>
-                </li>
-                <li class="nav-item dropdown-center" data-bs-theme="dark">
-                    <a class="nav-link" onclick="omkeGasm()" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        More
-                        <svg style="margin-bottom: 3px" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" id="ikondrop" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
-                            <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
-                        </svg>
-                    </a>
-                    <ul class="dropdown-menu" style="margin-left: -45px">
-                        <li><a class="dropdown-item" href="#contact">Contact Me</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="index.html">Portofolio</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden lg:hidden mt-4 mx-6 rounded-2xl bg-dark2 border border-dark3 overflow-hidden">
+        <ul class="flex flex-col py-4 font-body text-sm font-medium tracking-widest uppercase text-text2">
+            <li><a href="#home" class="block px-6 py-3 hover:text-accent hover:bg-dark3 transition-colors" onclick="closeMobile()">Home</a></li>
+            <li><a href="#about" class="block px-6 py-3 hover:text-accent hover:bg-dark3 transition-colors" onclick="closeMobile()">About</a></li>
+            <li><a href="#projects" class="block px-6 py-3 hover:text-accent hover:bg-dark3 transition-colors" onclick="closeMobile()">Projects</a></li>
+            <li><a href="#contact" class="block px-6 py-3 hover:text-accent hover:bg-dark3 transition-colors" onclick="closeMobile()">Contact</a></li>
+        </ul>
     </div>
 </nav>
-<!--navbar-->
 
-<!--jumbotron-->
-<section id="home" style="background-color: #202020" class="py-5">
-    <div class="container yoi py-5">
-        <div style="font-family: serif; font-weight: normal" class="row justify-content-between">
-            <div class="col-7 mx-5">
-                <h1 class="shadow-sm" style="font-size: 80px; font-weight: bolder; color: #dadada">Front End</h1>
-                <h1 style="font-size: 80px; font-weight: bolder; margin: -15px 0">Developer</h1>
-                <p style="font-size: 25px" class="my-5">My Language</p>
-                <div class="row">
-                    <div class="col">
-                        <button class="omke-gasm" style="background-color: #4c4c4c">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-javascript" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M14 0a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2zM9.053 7.596v3.127l-.007 1.752q0 .498-.186.752t-.556.263q-.342 0-.528-.234-.185-.234-.185-.684v-.175H6.37v.185q0 .665.253 1.113.255.45.703.674.44.225 1.016.225.88 0 1.406-.498.527-.498.527-1.485l.007-1.752V7.596zm3.808-.108q-.585 0-1.006.244a1.67 1.67 0 0 0-.634.674 2.1 2.1 0 0 0-.225.996q0 .753.293 1.182.303.42.967.732l.469.215q.438.186.625.43.185.244.185.635 0 .478-.166.703-.156.224-.527.224-.361.001-.547-.244-.186-.243-.205-.752h-1.162q.02.996.498 1.524.479.527 1.386.527.909 0 1.417-.518.507-.517.507-1.484 0-.81-.332-1.289t-1.045-.79l-.449-.196q-.39-.166-.556-.381-.166-.214-.166-.576 0-.4.165-.596.177-.195.508-.195.361 0 .508.234.156.234.176.703h1.123q-.03-.976-.498-1.484-.47-.518-1.309-.518"/>
-                            </svg>
-                        </button>
-                        <button class="omke-gasm" style="background-color: #4c4c4c">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-css" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M14 0a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V0zM4.59 7.498q-.908 0-1.455.508-.547.507-.547 1.484v3.106q0 .986.527 1.484t1.406.498q.576 0 1.016-.224.45-.225.703-.674.255-.45.254-1.114v-.185h-1.22v.176q0 .449-.186.683t-.527.235q-.372-.01-.557-.264-.186-.255-.186-.752V9.686q0-.547.166-.811.177-.264.577-.264.321 0 .517.225.195.224.195.693v.205h1.23V9.52q0-.674-.243-1.124a1.55 1.55 0 0 0-.664-.673q-.42-.225-1.006-.225m4.214-.01q-.586 0-1.006.244a1.67 1.67 0 0 0-.635.674 2.1 2.1 0 0 0-.225.996q0 .753.293 1.182.304.42.967.732l.469.215q.44.186.625.43.186.244.186.635 0 .478-.166.703-.157.224-.528.224-.36 0-.547-.244-.185-.243-.205-.752H6.87q.02.996.498 1.524.479.527 1.387.527t1.416-.518.508-1.484q0-.81-.332-1.289-.333-.479-1.045-.79l-.45-.196q-.39-.166-.556-.381-.165-.214-.166-.576 0-.4.166-.596.175-.195.508-.195.36 0 .508.234.156.234.175.703h1.123q-.03-.976-.498-1.484-.468-.518-1.308-.518m4.057 0q-.585 0-1.006.244a1.67 1.67 0 0 0-.634.674 2.1 2.1 0 0 0-.225.996q0 .753.293 1.182.303.42.967.732l.469.215q.438.186.625.43.185.244.185.635 0 .478-.166.703-.156.224-.527.224-.361.001-.547-.244-.186-.243-.205-.752h-1.162q.02.996.498 1.524.479.527 1.386.527.909 0 1.417-.518.507-.517.507-1.484 0-.81-.332-1.289t-1.045-.79l-.449-.196q-.39-.166-.556-.381-.166-.214-.166-.576 0-.4.165-.596.177-.195.508-.195.361 0 .508.234.156.234.176.703h1.123q-.03-.976-.498-1.484-.47-.518-1.309-.518"/>
-                            </svg>
-                        </button>
-                        <button class="omke-gasm" style="background-color: #4c4c4c">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-filetype-php" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M14 4.5V14a2 2 0 0 1-2 2h-1v-1h1a1 1 0 0 0 1-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5zM1.6 11.85H0v3.999h.791v-1.342h.803q.43 0 .732-.173.305-.175.463-.474a1.4 1.4 0 0 0 .161-.677q0-.375-.158-.677a1.2 1.2 0 0 0-.46-.477q-.3-.18-.732-.179m.545 1.333a.8.8 0 0 1-.085.38.57.57 0 0 1-.238.241.8.8 0 0 1-.375.082H.788V12.48h.66q.327 0 .512.181.185.182.185.522m4.48 2.666V11.85h-.79v1.626H4.153V11.85h-.79v3.999h.79v-1.714h1.682v1.714zm.703-3.999h1.6q.433 0 .732.179.3.175.46.477.158.302.158.677t-.161.677q-.159.299-.463.474a1.45 1.45 0 0 1-.733.173H8.12v1.342h-.791zm2.06 1.714a.8.8 0 0 0 .084-.381q0-.34-.184-.521-.184-.182-.513-.182h-.66v1.406h.66a.8.8 0 0 0 .375-.082.57.57 0 0 0 .237-.24Z"/>
-                            </svg>
-                        </button>
-                        <button class="omke-gasm" style="background-color: #4c4c4c">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-filetype-html" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M14 4.5V11h-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5zm-9.736 7.35v3.999h-.791v-1.714H1.79v1.714H1V11.85h.791v1.626h1.682V11.85h.79Zm2.251.662v3.337h-.794v-3.337H4.588v-.662h3.064v.662zm2.176 3.337v-2.66h.038l.952 2.159h.516l.946-2.16h.038v2.661h.715V11.85h-.8l-1.14 2.596H9.93L8.79 11.85h-.805v3.999zm4.71-.674h1.696v.674H12.61V11.85h.79v3.325Z"/>
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <img src="assets/svg/colourful-illustration-programmer-working-y.png" style="border-radius: 20%;"
-                     width="350" alt="Profile Git Ku">
-            </div>
-        </div>
-    </div>
-    <svg style="margin-bottom: -50px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#303030" fill-opacity="1" d="M0,128L40,133.3C80,139,160,149,240,165.3C320,181,400,203,480,197.3C560,192,640,160,720,154.7C800,149,880,171,960,186.7C1040,203,1120,213,1200,202.7C1280,192,1360,160,1400,144L1440,128L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z"></path></svg></section>
-<!--jumbotron-->
+<!-- ─── HERO ───────────────────────────────────────────────────── -->
+<section id="home" class="relative min-h-screen flex items-center pt-24">
+    <!-- Background glow blobs -->
+    <div class="pointer-events-none absolute top-1/4 -left-24 w-96 h-96 bg-accent/5 rounded-full blur-3xl"></div>
+    <div class="pointer-events-none absolute bottom-1/4 -right-24 w-80 h-80 bg-accent/5 rounded-full blur-3xl"></div>
 
-<!--About-->
-<section id="about" style="background-color: #303030">
-    <div class="container py-5">
-        <div class="row text-center">
-            <div class="col">
-                <h1 class="yoi py-3" style="font-size: 50px;font-family: serif; font-weight: bolder">About Me</h1>
+    <div class="max-w-6xl mx-auto px-6 w-full grid lg:grid-cols-2 gap-16 items-center py-16">
+        <!-- Text -->
+        <div class="order-2 lg:order-1">
+            <p class="font-mono text-accent text-sm tracking-[0.3em] uppercase mb-6 opacity-0 animate-fade-up" style="animation-delay:0.1s;animation-fill-mode:forwards">Front End Developer</p>
+            <h1 class="font-display text-[clamp(3.5rem,9vw,7rem)] leading-none text-white opacity-0 animate-fade-up" style="animation-delay:0.25s;animation-fill-mode:forwards">
+                Hello,<br>
+                I'm <span class="text-accent italic">Zidan.</span>
+            </h1>
+            <p class="font-body text-text2 text-lg mt-8 max-w-md leading-relaxed opacity-0 animate-fade-up" style="animation-delay:0.4s;animation-fill-mode:forwards">
+                Siswa SMK Negeri 5 Malang, jurusan PPLG — membangun interface yang bersih, cepat, dan fungsional.
+            </p>
+
+            <!-- Tech badges -->
+            <div class="flex flex-wrap gap-3 mt-8 opacity-0 animate-fade-up" style="animation-delay:0.55s;animation-fill-mode:forwards">
+                <span class="flex items-center gap-2 bg-dark2 border border-dark3 text-text1 text-xs font-mono px-4 py-2 rounded-full">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="#f7df1e" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M14 0a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2zM9.053 7.596v3.127l-.007 1.752q0 .498-.186.752t-.556.263q-.342 0-.528-.234-.185-.234-.185-.684v-.175H6.37v.185q0 .665.253 1.113.255.45.703.674.44.225 1.016.225.88 0 1.406-.498.527-.498.527-1.485l.007-1.752V7.596zm3.808-.108q-.585 0-1.006.244a1.67 1.67 0 0 0-.634.674 2.1 2.1 0 0 0-.225.996q0 .753.293 1.182.303.42.967.732l.469.215q.438.186.625.43.185.244.185.635 0 .478-.166.703-.156.224-.527.224-.361.001-.547-.244-.186-.243-.205-.752h-1.162q.02.996.498 1.524.479.527 1.386.527.909 0 1.417-.518.507-.517.507-1.484 0-.81-.332-1.289t-1.045-.79l-.449-.196q-.39-.166-.556-.381-.166-.214-.166-.576 0-.4.165-.596.177-.195.508-.195.361 0 .508.234.156.234.176.703h1.123q-.03-.976-.498-1.484-.47-.518-1.309-.518"/></svg>
+                    JavaScript
+                </span>
+                <span class="flex items-center gap-2 bg-dark2 border border-dark3 text-text1 text-xs font-mono px-4 py-2 rounded-full">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="#e34f26" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M14 4.5V11h-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5zm-9.736 7.35v3.999h-.791v-1.714H1.79v1.714H1V11.85h.791v1.626h1.682V11.85h.79Zm2.251.662v3.337h-.794v-3.337H4.588v-.662h3.064v.662zm2.176 3.337v-2.66h.038l.952 2.159h.516l.946-2.16h.038v2.661h.715V11.85h-.8l-1.14 2.596H9.93L8.79 11.85h-.805v3.999zm4.71-.674h1.696v.674H12.61V11.85h.79v3.325Z"/></svg>
+                    HTML
+                </span>
+                <span class="flex items-center gap-2 bg-dark2 border border-dark3 text-text1 text-xs font-mono px-4 py-2 rounded-full">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="#264de4" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M14 0a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2zM4.59 7.498q-.908 0-1.455.508-.547.507-.547 1.484v3.106q0 .986.527 1.484t1.406.498q.576 0 1.016-.224.45-.225.703-.674.255-.45.254-1.114v-.185h-1.22v.176q0 .449-.186.683t-.527.235q-.372-.01-.557-.264-.186-.255-.186-.752V9.686q0-.547.166-.811.177-.264.577-.264.321 0 .517.225.195.224.195.693v.205h1.23V9.52q0-.674-.243-1.124a1.55 1.55 0 0 0-.664-.673q-.42-.225-1.006-.225m4.214-.01q-.586 0-1.006.244a1.67 1.67 0 0 0-.635.674 2.1 2.1 0 0 0-.225.996q0 .753.293 1.182.304.42.967.732l.469.215q.44.186.625.43.186.244.186.635 0 .478-.166.703-.157.224-.528.224-.36 0-.547-.244-.185-.243-.205-.752H6.87q.02.996.498 1.524.479.527 1.387.527t1.416-.518.508-1.484q0-.81-.332-1.289-.333-.479-1.045-.79l-.45-.196q-.39-.166-.556-.381-.165-.214-.166-.576 0-.4.166-.596.175-.195.508-.195.36 0 .508.234.156.234.175.703h1.123q-.03-.976-.498-1.484-.468-.518-1.308-.518m4.057 0q-.585 0-1.006.244a1.67 1.67 0 0 0-.634.674 2.1 2.1 0 0 0-.225.996q0 .753.293 1.182.303.42.967.732l.469.215q.438.186.625.43.185.244.185.635 0 .478-.166.703-.156.224-.527.224-.361.001-.547-.244-.186-.243-.205-.752h-1.162q.02.996.498 1.524.479.527 1.386.527.909 0 1.417-.518.507-.517.507-1.484 0-.81-.332-1.289t-1.045-.79l-.449-.196q-.39-.166-.556-.381-.166-.214-.166-.576 0-.4.165-.596.177-.195.508-.195.361 0 .508.234.156.234.176.703h1.123q-.03-.976-.498-1.484-.47-.518-1.309-.518"/></svg>
+                    CSS
+                </span>
+                <span class="flex items-center gap-2 bg-dark2 border border-dark3 text-text1 text-xs font-mono px-4 py-2 rounded-full">
+                    <svg width="14" height="14" viewBox="-4 0 264 264" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid">
+                      <g>
+                        <path d="M255.855641,59.619717 C255.950565,59.9710596 256,60.3333149 256,60.6972536 L256,117.265345 C256,118.743206 255.209409,120.108149 253.927418,120.843385 L206.448786,148.178786 L206.448786,202.359798 C206.448786,203.834322 205.665123,205.195421 204.386515,205.937838 L105.27893,262.990563 C105.05208,263.119455 104.804608,263.201946 104.557135,263.289593 C104.464333,263.320527 104.376687,263.377239 104.278729,263.403017 C103.585929,263.58546 102.857701,263.58546 102.164901,263.403017 C102.051476,263.372083 101.948363,263.310215 101.840093,263.26897 C101.613244,263.186479 101.376082,263.1143 101.159544,262.990563 L2.07258227,205.937838 C0.7913718,205.201819 0,203.837372 0,202.359798 L0,32.6555248 C0,32.2843161 0.0515567729,31.9234187 0.144358964,31.5728326 C0.175293028,31.454252 0.24747251,31.3459828 0.288717928,31.2274022 C0.366053087,31.0108638 0.438232569,30.7891697 0.55165747,30.5880982 C0.628992629,30.4540506 0.742417529,30.3457814 0.83521972,30.2220451 C0.953800298,30.0570635 1.06206952,29.8869261 1.20127281,29.7425672 C1.31985339,29.6239866 1.4745237,29.5363401 1.60857131,29.4332265 C1.75808595,29.3094903 1.89213356,29.1754427 2.06227091,29.0774848 L2.06742659,29.0774848 L51.6134853,0.551122364 C52.8901903,-0.183535768 54.4613221,-0.183535768 55.7380271,0.551122364 L105.284086,29.0774848 L105.294397,29.0774848 C105.459379,29.1805983 105.598582,29.3094903 105.748097,29.4280708 C105.882144,29.5311844 106.031659,29.6239866 106.15024,29.7374115 C106.294599,29.8869261 106.397712,30.0570635 106.521448,30.2220451 C106.609095,30.3457814 106.727676,30.4540506 106.799855,30.5880982 C106.918436,30.7943253 106.985459,31.0108638 107.06795,31.2274022 C107.109196,31.3459828 107.181375,31.454252 107.212309,31.5779883 C107.307234,31.9293308 107.355765,32.2915861 107.356668,32.6555248 L107.356668,138.651094 L148.643332,114.878266 L148.643332,60.6920979 C148.643332,60.3312005 148.694889,59.9651474 148.787691,59.619717 C148.823781,59.4959808 148.890804,59.3877116 148.93205,59.269131 C149.014541,59.0525925 149.08672,58.8308984 149.200145,58.629827 C149.27748,58.4957794 149.390905,58.3875102 149.478552,58.2637739 C149.602288,58.0987922 149.705401,57.9286549 149.84976,57.7842959 C149.968341,57.6657153 150.117856,57.5780688 150.251903,57.4749553 C150.406573,57.351219 150.540621,57.2171714 150.705603,57.1192136 L150.710758,57.1192136 L200.261973,28.5928511 C201.538395,27.8571345 203.110093,27.8571345 204.386515,28.5928511 L253.932573,57.1192136 C254.107866,57.2223271 254.241914,57.351219 254.396584,57.4697996 C254.525476,57.5729132 254.674991,57.6657153 254.793572,57.7791402 C254.93793,57.9286549 255.041044,58.0987922 255.16478,58.2637739 C255.257582,58.3875102 255.371007,58.4957794 255.443187,58.629827 C255.561767,58.8308984 255.628791,59.0525925 255.711282,59.269131 C255.757683,59.3877116 255.824707,59.4959808 255.855641,59.619717 Z M247.740605,114.878266 L247.740605,67.8378666 L230.402062,77.8192579 L206.448786,91.6106946 L206.448786,138.651094 L247.745761,114.878266 L247.740605,114.878266 Z M198.194546,199.97272 L198.194546,152.901386 L174.633101,166.357704 L107.351512,204.757188 L107.351512,252.27191 L198.194546,199.97272 Z M8.25939501,39.7961379 L8.25939501,199.97272 L99.0921175,252.266755 L99.0921175,204.762344 L51.6392637,177.906421 L51.6237967,177.89611 L51.603174,177.885798 C51.443348,177.792996 51.3093004,177.658949 51.1597857,177.545524 C51.0308938,177.44241 50.8813791,177.359919 50.7679542,177.246494 L50.7576429,177.231027 C50.6235953,177.102135 50.5307931,176.942309 50.4173682,176.79795 C50.3142546,176.658747 50.1905184,176.540167 50.1080276,176.395808 L50.1028719,176.380341 C50.0100697,176.22567 49.9533572,176.040066 49.8863334,175.864773 C49.8193096,175.710103 49.7316631,175.565744 49.6904177,175.400762 L49.6904177,175.395606 C49.6388609,175.19969 49.6285496,174.993463 49.6079269,174.792392 C49.5873041,174.637722 49.5460587,174.483051 49.5460587,174.328381 L49.5460587,174.31807 L49.5460587,63.5689658 L25.5979377,49.7723734 L8.25939501,39.8012935 L8.25939501,39.7961379 Z M53.6809119,8.89300821 L12.3994039,32.6555248 L53.6706006,56.4180414 L94.9469529,32.6503692 L53.6706006,8.89300821 L53.6809119,8.89300821 Z M75.1491521,157.19091 L99.0972731,143.404629 L99.0972731,39.7961379 L81.7587304,49.7775291 L57.8054537,63.5689658 L57.8054537,167.177457 L75.1491521,157.19091 Z M202.324244,36.934737 L161.047891,60.6972536 L202.324244,84.4597702 L243.59544,60.6920979 L202.324244,36.934737 Z M198.194546,91.6106946 L174.24127,77.8192579 L156.902727,67.8378666 L156.902727,114.878266 L180.850848,128.664547 L198.194546,138.651094 L198.194546,91.6106946 Z M103.216659,197.616575 L163.759778,163.052915 L194.023603,145.781396 L152.778185,122.034346 L105.289242,149.374903 L62.0073307,174.292291 L103.216659,197.616575 Z" fill="#FF2D20"></path>
+                      </g>
+                    </svg>
+                    Laravel
+                </span>
             </div>
-        </div>
-        <div style="font-family: serif; font-weight: normal" class="fs-5 row my-5 justify-content-between">
-            <div class="col-9 yoi">
-                <div class="">
-                    <h3 class="fw-bolder yoi" style="color: #e4e4e4; font-family: sans-serif; font-size: 50px">Hello
-                    There </h3>
-                    <h3 style="font-size: 40px" class="dada">👋</h3>
-                </div>
-                <p class="my-3">Perkenalkan nama saya Zidan Alfa Permana.</p>
-                <p style="margin-top: -10px">Saya adalah murid dari SMK Negeri 5 Malang,</p>
-                <p class="" style="margin-top: -10px">saya berada di jurusan PPLG, dan saya duduk di bangku kelas 11</p>
-                <a href="https://github.com/MagmaZ3637">
-                    <button class="omke-gasm-part-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                             class="bi bi-github" viewBox="0 0 16 16">
-                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
-                        </svg>
-                    </button>
+
+            <!-- CTA -->
+            <div class="flex gap-4 mt-10 opacity-0 animate-fade-up" style="animation-delay:0.7s;animation-fill-mode:forwards">
+                <a href="#projects" class="inline-flex items-center gap-2 bg-accent text-dark1 font-body font-700 text-sm tracking-wide px-6 py-3 rounded-full hover:bg-amber-300 transition-colors duration-200">
+                    Lihat Projects
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+                <a href="#contact" class="inline-flex items-center gap-2 bg-transparent border border-dark4 text-text1 font-body text-sm tracking-wide px-6 py-3 rounded-full hover:border-accent hover:text-accent transition-colors duration-200">
+                    Contact
                 </a>
             </div>
-            <div class="col">
-                <img src="assets/images/gini-coi.jpg" class="img-thumbnail azek" style="border-radius: 50%" width="250" alt="Profile Git Ku">
+        </div>
+
+        <!-- Avatar / Illustration area -->
+        <div class="order-1 lg:order-2 flex justify-center lg:justify-end opacity-0 animate-fade-in" style="animation-delay:0.2s;animation-fill-mode:forwards">
+            <div class="relative w-72 h-72 lg:w-96 lg:h-96 animate-float">
+                <!-- Decorative ring -->
+                <div class="absolute inset-0 rounded-full border border-accent/20 scale-110"></div>
+                <div class="absolute inset-0 rounded-full border border-accent/10 scale-125"></div>
+                <!-- Avatar placeholder — swap src for real image -->
+                <img src="assets/svg/colourful-illustration-programmer-working-y.png"
+                     alt="Zidan Alfa Permana"
+                     class="w-full h-full object-cover rounded-full border-2 border-dark3"
+                     onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="w-full h-full rounded-full bg-dark2 border-2 border-dark3 items-center justify-center text-6xl font-display text-accent" style="display:none">Z</div>
+                <!-- Floating badge -->
+                <div class="absolute -bottom-4 left-1/2 -translate-x-1/2 whitespace-nowrap bg-dark2 border border-dark3 text-xs font-mono text-accent px-4 py-2 rounded-full shadow-xl">
+                    &#60;/&#62; kelas 11 · PPLG
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-text2 text-xs font-mono tracking-widest uppercase animate-bounce">
+        <span>scroll</span>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
+    </div>
+</section>
+
+<!-- ─── ABOUT ───────────────────────────────────────────────────── -->
+<section id="about" class="bg-dark2 py-32 relative overflow-hidden">
+    <div class="pointer-events-none absolute -top-32 right-0 w-[500px] h-[500px] bg-accent/5 rounded-full blur-3xl"></div>
+
+    <div class="max-w-6xl mx-auto px-6">
+        <!-- Section label -->
+        <div class="flex items-center gap-4 mb-16">
+            <span class="font-mono text-accent text-xs tracking-[0.3em] uppercase">01 — About</span>
+            <span class="flex-1 h-px bg-dark3 max-w-xs"></span>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+            <!-- Photo -->
+            <div class="flex justify-center">
+                <div class="relative">
+                    <div class="absolute -inset-4 bg-gradient-to-br from-accent/10 to-transparent rounded-3xl"></div>
+                    <img src="https://lh3.googleusercontent.com/a/ACg8ocJAeC9kHU5J9s8zjpGbGpO1hJWkJ7W7A_V-eCz_CUot3ZuXUanh=s200-c"
+                         alt="Zidan"
+                         class="relative w-72 h-80 object-cover rounded-2xl border border-dark3"
+                         onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                    <div class="relative w-72 h-80 rounded-2xl border border-dark3 bg-dark3 items-center justify-center text-7xl font-display text-accent" style="display:none">Z</div>
+                    <!-- small stat cards -->
+                    <div class="absolute -right-8 top-8 bg-dark1 border border-dark3 rounded-xl px-4 py-3 shadow-xl">
+                        <p class="font-mono text-accent text-2xl font-bold">11</p>
+                        <p class="font-body text-text2 text-xs mt-0.5">Kelas</p>
+                    </div>
+                    <div class="absolute -left-8 bottom-8 bg-dark1 border border-dark3 rounded-xl px-4 py-3 shadow-xl">
+                        <p class="font-mono text-accent text-2xl font-bold">3+</p>
+                        <p class="font-body text-text2 text-xs mt-0.5">Projects</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Text -->
+            <div>
+                <h2 class="font-display text-5xl lg:text-6xl text-white leading-tight mb-8">
+                    Hello<br>
+                    There <span class="not-italic text-4xl">👋</span>
+                </h2>
+                <p class="font-body text-text2 text-lg leading-relaxed mb-4">
+                    Perkenalkan, nama saya <span class="text-text1 font-semibold">Zidan Alfa Permana</span> — seorang siswa SMK Negeri 5 Malang.
+                </p>
+                <p class="font-body text-text2 text-lg leading-relaxed mb-4">
+                    Saya berada di jurusan <span class="text-accent font-mono text-base">PPLG</span> (Pengembangan Perangkat Lunak dan Gim), duduk di bangku kelas 11, dan fokus membangun skill di bidang front end development.
+                </p>
+                <p class="font-body text-text2 text-lg leading-relaxed mb-10">
+                    Saya suka bereksperimen dengan UI, logika program, dan sesekali membangun plugin Minecraft.
+                </p>
+                <a href="https://github.com/MagmaZ3637" target="_blank" class="inline-flex items-center gap-3 border border-dark4 hover:border-accent text-text1 hover:text-accent font-body text-sm px-6 py-3 rounded-full transition-all duration-200">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/></svg>
+                    github.com/MagmaZ3637
+                </a>
             </div>
         </div>
     </div>
 </section>
-<!--About-->
 
-<!--Project-->
-<section id="projects" style="background-color: #303030">
-    <div class="container py-5">
-        <div class="row text-center">
-            <div class="col">
-                <h1 class="yoi py-3" style="font-size: 50px;font-family: serif; font-weight: bolder">Projects</h1>
-            </div>
-        </div>
-        <div class="container my-5">
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                <div class="col">
-                    <div class="card shadow-sm">
-                        <img src="assets/images/yoi.png" alt="project 1" class="bd-placeholder-img card-img-top" height="225" role="img" width="100%">
-                        <div class="card-body">
-                            <h3 class="text-center fw-bolder">MTrim</h3>
-                            <p class="card-text">Plugin untuk software Pocketmine-MP, yang memiliki fitur menambahkan trim/hiasan ke armor.</p>
-                            <div class="d-flex justify-content-center align-items-center">
-                                <button type="button" onclick="changeWeb('trim')" class="btn btn-sm btn-dark">
-                                    <svg style="margin-bottom: 4px; margin-right: 3px" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
-                                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
-                                    </svg>
-                                    Lihat
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card shadow-sm">
-                        <img src="assets/images/ya.png" alt="project 1" class="bd-placeholder-img card-img-top" height="225" role="img" width="100%">
-                        <div class="card-body">
-                            <h3 class="text-center fw-bolder">TremegoKeuangan</h3>
-                            <p class="card-text">Web ini berisikan tentang keuangan terdapat dashboard dll. di web ini terdapat fitur login, withdraw, serta deposit</p>
-                            <div class="d-flex justify-content-center align-items-center">
-                                <button onclick="changeWeb('webku')" type="button" class="btn btn-sm btn-dark">
-                                    <svg style="margin-bottom: 4px; margin-right: 3px" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
-                                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
-                                    </svg>
-                                    Lihat
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card shadow-sm">
-                        <img src="assets/images/cepepe.png" alt="project 1" class="bd-placeholder-img card-img-top" height="225" role="img" width="100%">
-                        <div class="card-body">
-                            <h3 class="text-center fw-bolder">C++ Script Kalkulator</h3>
-                            <p class="card-text">Script ini adalah script simple berbahasa C++, fungsi script ini adalah dapat digunakan sebagai kalkulator</p>
-                            <div class="d-flex justify-content-center align-items-center">
-                                <button onclick="changeWeb('cppkalku')" type="button" class="btn btn-sm btn-dark">
-                                    <svg style="margin-bottom: 4px; margin-right: 3px" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
-                                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
-                                    </svg>
-                                    Lihat
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#303030" fill-opacity="1" d="M0,224L48,208C96,192,192,160,288,154.7C384,149,480,171,576,197.3C672,224,768,256,864,245.3C960,235,1056,181,1152,144C1248,107,1344,85,1392,74.7L1440,64L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
-<!--project-->
+<!-- ─── PROJECTS ────────────────────────────────────────────────── -->
+<section id="projects" class="bg-dark1 py-32 relative overflow-hidden">
+    <div class="pointer-events-none absolute bottom-0 left-0 w-[600px] h-[400px] bg-accent/5 rounded-full blur-3xl"></div>
 
-<!--pendidikan-->
-<!--<section id="pendidikan">
-    <div class="container my-5">
-        <div class="row text-center">
-            <div class="col">
-                <h1 class="yoi py-3" style="font-size: 50px;font-family: serif; font-weight: bolder">Pendidikan</h1>
-            </div>
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="flex items-center gap-4 mb-16">
+            <span class="font-mono text-accent text-xs tracking-[0.3em] uppercase">02 — Projects</span>
+            <span class="flex-1 h-px bg-dark3 max-w-xs"></span>
         </div>
-        <div class="row justify-content-center text-center my-5">
-            <div class="col">
-                <h5>
-                    Sekolah Dasar
-                </h5>
-                <p>Saya adalah alumni dari SD Negeri Dinoyo 4</p>
-            </div>
-            <div class="col">
-                <h5>
-                    Sekolah Menengah Pertama
-                </h5>
-                <p>Saya adalah alumni dari SMP Negeri 25 Malang</p>
-            </div>
-            <div class="col">
-                <h5>
-                    Sekolah Menengah Kejuruan
-                </h5>
-                <p>Saya adalah alumni dari SMK Negeri 5 Malang</p>
-            </div>
-        </div>
-    </div>
-</section>-->
-<!--pendidikan-->
 
-<!--contact-->
-<section id="contact">
-    <div class="container py-5 col-xl-10 col-xxl-8 px-4">
-        <div class="row text-center">
-            <div class="col">
-                <h1 class="yoi py-3" style="font-size: 50px;font-family: serif; font-weight: bolder">Connect With Me</h1>
+        <!-- ── Recently Project — standalone full-width card ── -->
+        <div class="mt-4 mb-9">
+            <!-- label -->
+            <div class="flex items-center gap-3 mb-5">
+                <span class="relative flex h-2.5 w-2.5">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-60"></span>
+                    <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-accent"></span>
+                </span>
+                <span class="font-mono text-accent text-xs tracking-[0.3em] uppercase">Recently</span>
             </div>
-        </div>
-        <div class="row align-items-center g-lg-5 py-5">
-            <div class="col-md-10 mx-auto col-lg-5">
-                <div class="p-4 p-md-5 border rounded-3 bg-body-tertiary text-dark text-center cardu">
-                    <h3>Social Media</h3>
-                    <div class="my-4">
-                        <a href="https://www.instagram.com/magmaz36376/">
-                            <button class="omke-gasm" style="background-color: #4c4c4c">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                                     class="bi bi-instagram" viewBox="0 0 16 16">
-                                    <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/>
-                                </svg>
-                            </button>
-                        </a>
-                        <a href="https://www.youtube.com/@MagmaZ37">
-                            <button class="omke-gasm" style="background-color: #4c4c4c">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                                     class="bi bi-youtube" viewBox="0 0 16 16">
-                                    <path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.01 2.01 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.01 2.01 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31 31 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.01 2.01 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A100 100 0 0 1 7.858 2zM6.4 5.209v4.818l4.157-2.408z"/>
-                                </svg>
-                            </button>
-                        </a>
-                        <a href="https://www.tiktok.com/@magmaz_3637">
-                            <button class="omke-gasm" style="background-color: #4c4c4c">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                                     class="bi bi-tiktok" viewBox="0 0 16 16">
-                                    <path d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3z"/>
-                                </svg>
-                            </button>
-                        </a>
-                    </div>
-                    <div class="border"></div>
-                    <h3 class="my-3">Gmail</h3>
-                    <a href="mailto:zidanalfa54r@gmail.com">
-                        <button class="jimeil">
-                            zidanalfa54r@gmail.com
+
+            <div class="group relative bg-dark2 border border-accent/25 rounded-2xl overflow-hidden hover:border-accent/50 transition-all duration-300 hover:shadow-2xl hover:shadow-black/50">
+                <!-- Accent top bar -->
+                <div class="h-1 w-full bg-gradient-to-r from-accent/60 via-accent to-accent/60"></div>
+
+                <div class="grid lg:grid-cols-2 gap-0">
+                    <!-- Image side — Carousel -->
+                    <div class="relative overflow-hidden bg-dark3 h-full" id="recently-carousel">
+
+                        <!-- Slide 1 -->
+                        <div class="carousel-slide absolute inset-0 transition-opacity duration-500" style="opacity:1;z-index:1">
+                            <img src="assets/images/geocam.jpeg" alt="Screenshot 1"
+                                 class="w-full h-full object-cover object-center">
+                        </div>
+                        <!-- Slide 2 -->
+                        <div class="carousel-slide absolute inset-0 transition-opacity duration-500" style="opacity:0;z-index:0">
+                            <img src="assets/images/geocam1.jpeg" alt="Screenshot 2"
+                                 class="w-full h-full object-cover object-center">
+                        </div>
+                        <!-- Slide 3 -->
+                        <div class="carousel-slide absolute inset-0 transition-opacity duration-500" style="opacity:0;z-index:0">
+                            <img src="assets/images/geocam2.jpeg" alt="Screenshot 3"
+                                 class="w-full h-full object-cover object-center">
+                        </div>
+
+                        <!-- Gradient overlays -->
+                        <div class="pointer-events-none absolute inset-0 bg-gradient-to-r from-transparent to-dark2/90 hidden lg:block"></div>
+                        <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-dark2/90 to-transparent lg:hidden"></div>
+
+                        <!-- Prev / Next buttons -->
+                        <button onclick="carouselPrev()" aria-label="Previous"
+                                class="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-dark1/70 hover:bg-dark1 border border-dark3 hover:border-accent/50 text-white transition-all duration-200">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7"/></svg>
                         </button>
+                        <button onclick="carouselNext()" aria-label="Next"
+                                class="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-dark1/70 hover:bg-dark1 border border-dark3 hover:border-accent/50 text-white transition-all duration-200">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+                        </button>
+
+                        <!-- Dot indicators -->
+                        <div id="carousel-dots" class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+                            <button onclick="carouselGo(0)" class="carousel-dot w-5 h-1.5 rounded-full bg-accent transition-all duration-300"></button>
+                            <button onclick="carouselGo(1)" class="carousel-dot w-1.5 h-1.5 rounded-full bg-white/30 hover:bg-white/60 transition-all duration-300"></button>
+                            <button onclick="carouselGo(2)" class="carousel-dot w-1.5 h-1.5 rounded-full bg-white/30 hover:bg-white/60 transition-all duration-300"></button>
+                        </div>
+                    </div>
+
+                    <!-- Content side -->
+                    <div class="p-8 lg:p-10 flex flex-col justify-between">
+                        <div>
+                            <div class="flex flex-wrap items-center gap-3 mb-5">
+                                <span class="font-mono text-[10px] tracking-widest uppercase bg-accent/20 text-accent border border-accent/30 px-3 py-1 rounded-full">🆕 Terbaru</span>
+                                <span class="font-mono text-[10px] tracking-widest uppercase bg-dark3 text-text2 border border-dark4 px-3 py-1 rounded-full">Aplikasi</span>
+                            </div>
+                            <h3 class="font-display text-3xl lg:text-4xl text-white mb-4 leading-tight">
+                                GeoCam
+                            </h3>
+                            <p class="font-body text-text2 text-sm leading-relaxed mb-6">
+                                Aplikasi android GeoCam yang memiliki fitur tambahan watermark seperti lokasi map pengguna, koordinat, alamat, tanggal dan hari.
+                            </p>
+
+                            <!-- Tech stack pills -->
+                            <div class="flex flex-wrap gap-2 mb-8">
+                                <span class="font-mono text-xs text-text2 bg-dark1 border border-dark3 px-3 py-1 rounded-full">React Native</span>
+                                <span class="font-mono text-xs text-text2 bg-dark1 border border-dark3 px-3 py-1 rounded-full">JavaScript</span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4">
+                            <a href="https://github.com/ZidanAlfaPermana/Geo-Cam" target="_blank"
+                               class="inline-flex items-center gap-2 bg-accent hover:bg-amber-300 text-dark1 font-body font-semibold text-sm px-6 py-2.5 rounded-full transition-colors duration-200">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/></svg>
+                                Lihat di GitHub
+                            </a>
+                            <span class="font-mono text-text2 text-xs">2025</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- label -->
+        <div class="flex items-center gap-3 mb-5">
+                <span class="relative flex h-2.5 w-2.5">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-60"></span>
+                    <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-accent"></span>
+                </span>
+            <span class="font-mono text-accent text-xs tracking-[0.3em] uppercase">All Projects</span>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <!-- Card 1 -->
+            <div class="group relative bg-dark2 rounded-2xl border border-dark3 overflow-hidden flex flex-col hover:border-accent/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/40">
+                <div class="relative h-48 overflow-hidden bg-dark3">
+                    <img src="assets/images/yoi.png" alt="MTrim" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark2/80 to-transparent"></div>
+                    <div class="absolute top-4 right-4">
+                        <span class="font-mono text-[10px] tracking-widest uppercase bg-accent/20 text-accent border border-accent/30 px-3 py-1 rounded-full">Plugin</span>
+                    </div>
+                </div>
+                <div class="p-6 flex flex-col flex-grow">
+                    <h3 class="font-display text-2xl text-white mb-3">MTrim</h3>
+                    <p class="font-body text-text2 text-sm leading-relaxed flex-grow mb-6">Plugin untuk software Pocketmine-MP. Menambahkan fitur trim / hiasan ke armor dengan mudah.</p>
+                    <a href="https://github.com/MagmaZ3637" target="_blank" class="inline-flex items-center gap-2 text-accent font-mono text-xs hover:gap-3 transition-all duration-200">
+                        Lihat di GitHub
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </a>
                 </div>
             </div>
-            <div class="col-md-10 mx-auto col-lg-5">
-                <form method="post" class="p-4 p-md-5 border rounded-3 bg-body-tertiary cardu">
-                    <div class="form-floating mb-3">
-                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email" required>
-                        <label for="floatingInput">Email</label>
+
+            <!-- Card 2 -->
+            <div class="group relative bg-dark2 rounded-2xl border border-dark3 overflow-hidden flex flex-col hover:border-accent/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/40">
+                <div class="relative h-48 overflow-hidden bg-dark3">
+                    <img src="assets/images/ya.png" alt="TremegoKeuangan" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark2/80 to-transparent"></div>
+                    <div class="absolute top-4 right-4">
+                        <span class="font-mono text-[10px] tracking-widest uppercase bg-accent/20 text-accent border border-accent/30 px-3 py-1 rounded-full">Web App</span>
                     </div>
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="floatingPassword" placeholder="Pesan Anda" name="pesan" required>
-                        <label for="floatingPassword">Pesan</label>
-                    </div>
-                    <button class="w-100 btn btn-lg" style="background-color: #4c4c4c" type="submit" name="send">Kirim</button>
-                    <hr class="my-3">
-                    <small class="text-body-secondary">Jangan masukkan data penting di kotak input.</small>
-                </form>
+                </div>
+                <div class="p-6 flex flex-col flex-grow">
+                    <h3 class="font-display text-2xl text-white mb-3">TremegoKeuangan</h3>
+                    <p class="font-body text-text2 text-sm leading-relaxed flex-grow mb-6">Web keuangan dengan dashboard, fitur login, withdraw, dan deposit yang fungsional.</p>
+                    <a href="https://github.com/MagmaZ3637" target="_blank" class="inline-flex items-center gap-2 text-accent font-mono text-xs hover:gap-3 transition-all duration-200">
+                        Lihat di GitHub
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
             </div>
+
+            <!-- Card 3 -->
+            <div class="group relative bg-dark2 rounded-2xl border border-dark3 overflow-hidden flex flex-col hover:border-accent/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/40">
+                <div class="relative h-48 overflow-hidden bg-dark3">
+                    <img src="assets/images/cepepe.png" alt="C++ Kalkulator" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark2/80 to-transparent"></div>
+                    <div class="absolute top-4 right-4">
+                        <span class="font-mono text-[10px] tracking-widest uppercase bg-accent/20 text-accent border border-accent/30 px-3 py-1 rounded-full">Script</span>
+                    </div>
+                </div>
+                <div class="p-6 flex flex-col flex-grow">
+                    <h3 class="font-display text-2xl text-white mb-3">C++ Kalkulator</h3>
+                    <p class="font-body text-text2 text-sm leading-relaxed flex-grow mb-6">Script sederhana berbahasa C++ yang berfungsi sebagai kalkulator operasi dasar.</p>
+                    <a href="https://github.com/MagmaZ3637" target="_blank" class="inline-flex items-center gap-2 text-accent font-mono text-xs hover:gap-3 transition-all duration-200">
+                        Lihat di GitHub
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- ─── CONTACT ─────────────────────────────────────────────────── -->
+<section id="contact" class="bg-dark2 py-32 relative overflow-hidden">
+    <div class="pointer-events-none absolute top-0 right-1/4 w-96 h-96 bg-accent/5 rounded-full blur-3xl"></div>
+
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="flex items-center gap-4 mb-16">
+            <span class="font-mono text-accent text-xs tracking-[0.3em] uppercase">03 — Contact</span>
+            <span class="flex-1 h-px bg-dark3 max-w-xs"></span>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-12 items-start">
+
+            <!-- Left: info -->
+            <div>
+                <h2 class="font-display text-5xl lg:text-6xl text-white leading-tight mb-6">Let's<br>Connect.</h2>
+                <p class="font-body text-text2 text-lg leading-relaxed mb-10">Ada pertanyaan, kolaborasi, atau sekadar ingin say hi? Hubungi saya lewat sosmed atau kirim pesan langsung.</p>
+
+                <!-- Socials -->
+                <div class="flex gap-4 mb-10">
+                    <a href="https://www.instagram.com/magmaz36376/" target="_blank"
+                       class="flex items-center gap-3 bg-dark1 border border-dark3 hover:border-accent/50 hover:text-accent text-text2 text-sm font-body px-5 py-3 rounded-xl transition-all duration-200">
+                        <svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 16 16"><path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/></svg>
+                        Instagram
+                    </a>
+                    <a href="https://www.youtube.com/@MagmaZ37" target="_blank"
+                       class="flex items-center gap-3 bg-dark1 border border-dark3 hover:border-accent/50 hover:text-accent text-text2 text-sm font-body px-5 py-3 rounded-xl transition-all duration-200">
+                        <svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 16 16"><path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.01 2.01 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.01 2.01 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31 31 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.01 2.01 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A100 100 0 0 1 7.858 2zM6.4 5.209v4.818l4.157-2.408z"/></svg>
+                        YouTube
+                    </a>
+                    <a href="https://www.tiktok.com/@magmaz_3637" target="_blank"
+                       class="flex items-center gap-3 bg-dark1 border border-dark3 hover:border-accent/50 hover:text-accent text-text2 text-sm font-body px-5 py-3 rounded-xl transition-all duration-200">
+                        <svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 16 16"><path d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3z"/></svg>
+                        TikTok
+                    </a>
+                </div>
+
+                <!-- Email -->
+                <div class="bg-dark1 border border-dark3 rounded-2xl p-6">
+                    <p class="font-mono text-text2 text-xs tracking-widest uppercase mb-2">Email</p>
+                    <a href="mailto:zidanalfa18@gmail.com" class="font-body text-text1 text-lg hover:text-accent transition-colors duration-200 break-all">
+                        zidanalfa18@gmail.com
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right: form -->
+            <div class="bg-dark1 border border-dark3 rounded-2xl p-8">
+                <h3 class="font-display text-2xl text-white mb-6">Kirim Pesan</h3>
+                <div id="form-success" class="hidden bg-accent/10 border border-accent/30 text-accent font-mono text-sm px-4 py-3 rounded-xl mb-6">
+                    ✓ Pesan terkirim! Terima kasih.
+                </div>
+                <div class="space-y-5">
+                    <div>
+                        <label class="block font-mono text-text2 text-xs tracking-widest uppercase mb-2">Email</label>
+                        <input id="inp-email" type="email" placeholder="name@example.com"
+                               class="w-full bg-dark2 text-text1 border border-dark3 rounded-xl px-4 py-3 font-body text-sm placeholder-dark4 focus:outline-none focus:border-accent/50 transition-colors duration-200">
+                    </div>
+                    <div>
+                        <label class="block font-mono text-text2 text-xs tracking-widest uppercase mb-2">Pesan</label>
+                        <textarea id="inp-pesan" rows="5" placeholder="Tulis pesan Anda di sini..."
+                                  class="w-full bg-dark2 text-text1 border border-dark3 rounded-xl px-4 py-3 font-body text-sm placeholder-dark4 focus:outline-none focus:border-accent/50 transition-colors duration-200 resize-none"></textarea>
+                    </div>
+                    <button id="send-btn" onclick="handleSend()"
+                            class="w-full bg-accent hover:bg-amber-300 text-dark1 font-body font-semibold text-sm py-3 rounded-xl transition-colors duration-200">
+                        Kirim Pesan
+                    </button>
+                    <p class="font-mono text-xs text-text2 text-center">Jangan masukkan data sensitif di sini.</p>
+                </div>
+            </div>
+
         </div>
     </div>
 </section>
-<!--contact-->
 
-<!--footer-->
-<footer class="d-flex flex-wrap justify-content-center align-items-center py-3 border-top font-white" style="background-color: #202020">
-    <div class="text-center d-flex">
-        <span class="mx-5 mb-3 mb-md-0 ">© Zidan Alfa Permana | Made with ❤</span>
+<!-- ─── FOOTER ─────────────────────────────────────────────────── -->
+<footer class="bg-dark1 border-t border-dark3 py-8">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <span class="font-display text-xl text-white"><span class="text-accent">Z</span>idan.</span>
+        <p class="font-mono text-text2 text-xs tracking-wide">© 2025 Zidan Alfa Permana · Made with <span class="text-accent">♥</span></p>
+        <div class="flex gap-4">
+            <a href="#home" class="font-mono text-text2 text-xs hover:text-accent transition-colors">↑ Top</a>
+        </div>
     </div>
 </footer>
-<!--footer-->
+
+<!-- ─── INLINE SCRIPTS ─────────────────────────────────────────── -->
+<script>
+    // ── Navbar scroll effect ──
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 60) {
+            navbar.classList.add('bg-dark1/95', 'backdrop-blur-sm', 'shadow-lg');
+        } else {
+            navbar.classList.remove('bg-dark1/95', 'backdrop-blur-sm', 'shadow-lg');
+        }
+    });
+
+    // ── Mobile menu toggle ──
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const bar1 = document.getElementById('bar1');
+    const bar2 = document.getElementById('bar2');
+    const bar3 = document.getElementById('bar3');
+    let menuOpen = false;
+
+    hamburger.addEventListener('click', () => {
+        menuOpen = !menuOpen;
+        mobileMenu.classList.toggle('hidden', !menuOpen);
+        if (menuOpen) {
+            bar1.style.transform = 'translateY(8px) rotate(45deg)';
+            bar2.style.opacity = '0';
+            bar3.style.transform = 'translateY(-8px) rotate(-45deg)';
+        } else {
+            bar1.style.transform = '';
+            bar2.style.opacity = '';
+            bar3.style.transform = '';
+        }
+    });
+
+    function closeMobile() {
+        menuOpen = false;
+        mobileMenu.classList.add('hidden');
+        bar1.style.transform = '';
+        bar2.style.opacity = '';
+        bar3.style.transform = '';
+    }
+
+    // ── Fake send handler ──
+    function handleSend() {
+        const email = document.getElementById('inp-email').value.trim();
+        const pesan = document.getElementById('inp-pesan').value.trim();
+        if (!email || !pesan) {
+            alert('Mohon isi email dan pesan terlebih dahulu.');
+            return;
+        }
+        document.getElementById('form-success').classList.remove('hidden');
+        document.getElementById('inp-email').value = '';
+        document.getElementById('inp-pesan').value = '';
+    }
+
+    // ── Carousel ──
+    let carouselIndex = 0;
+    const slides = document.querySelectorAll('.carousel-slide');
+    const totalSlides = slides.length;
+
+    function carouselUpdateUI() {
+        slides.forEach((slide, i) => {
+            slide.style.opacity = i === carouselIndex ? '1' : '0';
+            slide.style.zIndex  = i === carouselIndex ? '1' : '0';
+        });
+        document.querySelectorAll('.carousel-dot').forEach((dot, i) => {
+            if (i === carouselIndex) {
+                dot.style.width = '20px';
+                dot.style.backgroundColor = '#c8a96e';
+            } else {
+                dot.style.width = '6px';
+                dot.style.backgroundColor = 'rgba(255,255,255,0.3)';
+            }
+        });
+    }
+
+    function carouselNext() {
+        carouselIndex = (carouselIndex + 1) % totalSlides;
+        carouselUpdateUI();
+    }
+
+    function carouselPrev() {
+        carouselIndex = (carouselIndex - 1 + totalSlides) % totalSlides;
+        carouselUpdateUI();
+    }
+
+    function carouselGo(i) {
+        carouselIndex = i;
+        carouselUpdateUI();
+    }
+
+    // Auto-play every 3.5s
+    setInterval(carouselNext, 3500);
+
+    // ── Intersection Observer fade-in on scroll ──
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('opacity-100', 'translate-y-0');
+                entry.target.classList.remove('opacity-0', 'translate-y-8');
+            }
+        });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('section > div').forEach(el => {
+        if (!el.closest('#home')) {
+            el.classList.add('transition-all', 'duration-700', 'opacity-0', 'translate-y-8');
+            observer.observe(el);
+        }
+    });
+</script>
+
 </body>
 </html>
