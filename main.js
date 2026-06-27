@@ -87,3 +87,5 @@ document.querySelectorAll('section > div').forEach(el => {
         observer.observe(el);
     }
 });
+
+document.getElementById('year').innerHTML = new Date().getFullYear().toString();
